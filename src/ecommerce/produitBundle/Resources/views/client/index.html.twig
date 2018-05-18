@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h2 class="page-header"> Liste des Clients </h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Login</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for client in Listeclients %}
+      <tr>
+        <td> {{ client.id }}    </td>
+      	<td> {{ client.login }}    </td>
+        <td>
+<a href="/Projet1/web/app_dev.php/detailC/{{ client.id }}" class="btn btn-success"> afficher </a>
+<a href="/Projet1/web/app_dev.php/modifierC/{{ client.id }}" class="btn btn-default">  Modifier </a>
+<a href="/Projet1/web/app_dev.php/clientSup/{{ client.id }}" class="btn btn-danger"> Supprimer </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

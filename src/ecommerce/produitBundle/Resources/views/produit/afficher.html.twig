@@ -1,0 +1,40 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+
+ {% for prod in ListeProduits %}
+ 
+<a href="single.html">
+ <div class="product-grid love-grid">
+            <div class="more-product"><span> </span></div>            
+            <div class="product-img b-link-stripe b-animate-go  thickbox">
+           
+           <img src="{{ asset ('uploads/image/'~prod.image)}}" width='50%'/>
+
+              <figure>
+
+</figure>
+              <div class="b-wrapper">
+              <h4 class="b-animate b-from-left  b-delay03">             
+             
+              <a href="/Projet1/web/app_dev.php/detail1/{{ prod.id }}">Quick View</a>
+              </h4>
+              </div>
+               <li class="list-group-item" >
+
+
+              <span class="glyphicon glyphicon-zoom-in" aria-hidden="true">  Prix: {{ prod.prixP }}dh</li>  
+            </div></a>
+          
+            <div class="product-info simpleCart_shelfItem">
+              <div class="product-info-cust">
+                 <a class="btn btn-success" href="{{ path('panierClt')}}">Ajouter au panier</a> 
+                  
+              </div>                    
+              <div class="clearfix"> </div>
+            </div>
+          </div>
+          
+
+ {% endfor %}
+
+{% endblock %}

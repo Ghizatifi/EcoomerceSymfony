@@ -1,0 +1,51 @@
+
+{% extends 'base1.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+
+        <div class="span3">
+            </div>	
+
+            <div class="span9">
+                <div class="row">
+                    <div class="span5">
+						<img src="{{ asset ('uploads/image/'~ListeProduits.image)}}" class="img-responsive" alt="" width='25%'/>
+                    </div>
+
+                    <div class="span4">
+                        <h2><li class="list-group-item">{{ ListeProduits.designationP}}</li></h2>
+                        <h4><li class="list-group-item">Prix : {{ListeProduits.prixP}}dh</li></h4>
+                        <h4><li class="list-group-item">Catégorie : {{ListeProduits.categorie}}</li></h4>
+                        <h4><li class="list-group-item">Size: {{ListeProduits.size}}</li></h4>
+                        <h4><li class="list-group-item">Couleur: {{ListeProduits.couleur}}</li></h4>
+                        <h4><li class="list-group-item">Marque: {{ListeProduits.marque}}</li></h4>
+                        <li class="list-group-item">
+                        <form action="{{ path('ajouter', { 'id' : ListeProduits.id }) }}" method="get">
+
+                            <select name="qte" class="span1">
+                                {% for i in 1..10 %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                          </li>
+                            <div>
+                                <button class="btn btn-primary">Ajouter au panier</button>
+                            </div>
+                        </form>
+
+                           
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+ 

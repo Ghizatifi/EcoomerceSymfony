@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h2 class="page-header"> Liste des Fournisseurs </h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom Fournisseur</th>
+        <th>Telephone Fournisseur</th>
+        <th>Email Fournisseur</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for fournisseur in ListeFournisseurs %}
+      <tr>
+        <td> {{ fournisseur.id }}    </td>
+      	<td> {{ fournisseur.nomF }}    </td>
+        <td> {{ fournisseur.telF }}  </td>
+        <td> {{ fournisseur.emailF}} </td>
+        <td>
+<a href="/Projet1/web/app_dev.php/detailF/{{ fournisseur.id }}" class="btn btn-success"> afficher </a>
+<a href="/Projet1/web/app_dev.php/modifierF/{{ fournisseur.id }}" class="btn btn-default">  Modifier </a>
+<a href="/Projet1/web/app_dev.php/fournisseurSup/{{ fournisseur.id }}" class="btn btn-danger"> Supprimer </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,32 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Informations Sur Produits</h1>
+<hr>
+<li class="list-group-item">Designation : {{ ListeProduits.designationP}}</li>
+<ul class="list-group">
+<li class="list-group-item">Prix : {{ListeProduits.prixP}}</li>
+<li class="list-group-item">Marque: {{ListeProduits.marque}}</li>
+<li class="list-group-item">Size: {{ListeProduits.size}}</li>
+<li class="list-group-item">Couleur: {{ListeProduits.couleur}}</li>
+<li class="list-group-item">Quantité: {{ListeProduits.quantite}}</li>
+<li class="list-group-item">Seuil: {{ListeProduits.seuil}}</li>
+<li class="list-group-item">Catégorie Homme/Femme: {{ListeProduits.categorieHF}}</li>
+<li class="list-group-item">Catégorie Moderne/Traditionnel: {{ListeProduits.categorieMT}}</li>
+<li class="list-group-item">Catégorie : {{ListeProduits.categorie}}</li>
+
+{% if(ListeProduits.image != null) == true %}
+<li class="list-group-item"> <img src="{{ asset ('uploads/image/'~ListeProduits.image)}}" width='15%'/></li>
+{% endif %}
+</ul>
+{% endblock %}
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,4 @@
+services:
+#    bons.example:
+#        class: ecommerce\BonsBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

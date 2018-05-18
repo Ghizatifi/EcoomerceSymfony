@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h2 class="page-header"> Liste des Produits </h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Designation</th>
+        <th>Prix</th>
+        <th>Marque</th>
+        <th>Size</th>
+        <th>Couleur</th>
+        <th>Quantité</th>
+        <th>Seuil</th>
+        <th>CatégorieH/F</th>
+        <th>CatégorieM/T</th>
+        <th>Catégorie</th>
+        <th>Image</th>
+        <th width='25%'></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for produit in ListeProduits %}
+      <tr>
+        <td> {{ produit.id }} </td>
+      	<td> {{ produit.designationP }}</td>
+        <td> {{ produit.prixP }}  </td>
+        <td> {{ produit.marque}} </td>
+        <td> {{ produit.size}} </td>
+        <td> {{ produit.couleur}}</td>
+        <td> {% if (produit.quantite < produit.seuil) %}<a href="/Projet1/web/app_dev.php/reapprov/{{ produit.id }}" class="btn btn-danger"> {{ produit.quantite}} </a>
+        {% else %}
+        {{ produit.quantite}}
+         {% endif %}</td>
+        <td> {{ produit.seuil}} </td>
+        <td> {{ produit.categorieHF}} </td>
+        <td> {{ produit.categorieMT}} </td>
+        <td> {{ produit.categorie}} </td>
+        <td> {% if(produit.image != null) == true %}
+ <img src="{{ asset ('uploads/image/'~produit.image)}}" width='20%'/>{% endif %} </td>
+<td>
+<a href="/Projet1/web/app_dev.php/detail/{{ produit.id }}" class="btn btn-success"> afficher </a>
+<a href="/Projet1/web/app_dev.php/Modif/{{ produit.id }}" class="btn btn-default"> Modifier </a>
+<a href="/Projet1/web/app_dev.php/produitsSup/{{ produit.id }}" class="btn btn-danger"> Supprimer </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

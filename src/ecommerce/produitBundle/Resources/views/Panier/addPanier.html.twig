@@ -1,0 +1,70 @@
+{% extends 'base3.html.twig' %}
+
+{% set total = 0 %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+
+        
+
+             {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            <h2>Mon Panier</h2>
+          <div class="bs-docs-example">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Désignation</th>
+                        <th>Quantité</th>
+                        <th>Prix unitaire</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if produit|length == 0 %}
+                        <tr>
+                            <td colspan="4"><center>Aucun articles dans votre panier</center></td>
+                        </tr>
+                    {% endif %}
+                    
+                    {% for produit in produit %}
+                    <tr>
+                        <form action="http://localhost/Projet1/web/app_dev.php/ajouterPanier/{{produit.id}}" method="get">
+						                <tr class="success">
+
+                            <td>{{ produit.designationP }}</td>
+                            <td>
+            <select name="qte" class="span1" onChange="this.form.submit()">
+                                    {% for i in 1..10 %}
+                                        <option value="{{ i }}" {% if i == panierClt[produit.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                    {% endfor %}
+                                </select>&nbsp;
+                            </td>
+                            <td>{{ produit.prixP }} dh</td>
+                            <td>{{ produit.prixP * panierClt[produit.id]}}  dh</td>
+							<td><a href="http://localhost/Projet1/web/app_dev.php/supprimer/{{produit.id}}"><i class="icon-remove-sign"></i>Annuler</a></td>
+</tr>
+                        </form>
+                    </tr>
+					{% set total = total + (produit.prixP * panierClt[produit.id]) %}
+                     {% endfor %}  
+                </tbody>
+            </table>
+</div>
+            <dl class="dl-horizontal pull-right">
+                <dt>Total des achats :</dt><dd>{{ total }} dh</dd>
+                
+            </dl>
+            <div class="clearfix"></div>
+            <button class="btn btn-success" onclick="window.print();"><i class="fa fa-print"></i> Imprimer</button>
+       
+            <a href="/Projet1/web/Template1/index.html" class="btn btn-primary">Ajouter des produits</a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

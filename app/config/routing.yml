@@ -1,0 +1,18 @@
+bons:
+    resource: "@BonsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+produit:
+    resource: "@produitBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ecommerce_fournisseur:
+    resource: "@ecommerceFournisseurBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
